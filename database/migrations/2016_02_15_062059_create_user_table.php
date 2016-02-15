@@ -22,7 +22,7 @@ class CreateUserTable extends Migration
             $table->tinyInteger('status')->default(1)->index('status')->comment('状态，-2-删除，-1-禁用，1-正常');
             $table->dateTime('create_at')->comment('创建时间');
             $table->dateTime('update_at')->nullable()->comment('更新时间');
-            $table->engine='InnoDB';
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -16,7 +16,7 @@ class CreateArticlesContentTable extends Migration
             $table->increments('id')->comment('主键');
             $table->integer('art_id')->unsigned()->index('art_id')->comment('文章ID');
             $table->text('content')->nullable()->comment('内容');
-            $table->engine='InnoDB';
+            $table->engine = 'InnoDB';
         });
     }
 
