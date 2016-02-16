@@ -13,6 +13,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('Admin')->withPages(Articles::all());
+        return view('admin/Admin', ['articles' => Articles::all()]);
     }
 }

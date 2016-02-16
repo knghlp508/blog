@@ -17,6 +17,8 @@ class ArticelsTableSeeder extends Seeder
             Articles::create([
                 'title' => '测试文章1' . $i,
                 'user_id' => 1,
+                'create_at' => date('Y-m-d H:i:s'),
+                'update_at' => date('Y-m-d H:i:s'),
             ]);
         }
     }
