@@ -40,39 +40,61 @@
         </header>
         <!-- 顶部区域end -->
 
+        <!-- 导航菜单start -->
         <ul id="main-menu" class="main-menu">
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li class="active opened active">
                 <a href="dashboard-1.html">
                     <i class="linecons-cog"></i>
-                    <span class="title">Dashboard</span>
+                    <span class="title">管理</span>
                 </a>
                 <ul>
                     <li class="active">
-                        <a href="dashboard-1.html">
-                            <span class="title">Dashboard 1</span>
+                        <a href="extra-icons-fontawesome.html">
+                            <span class="title">管理员</span>
+                            {{--<span class="label label-warning pull-right">4</span>--}}
                         </a>
+                        <ul>
+                            <li class="active">
+                                <a href="extra-icons-fontawesome.html">
+                                    <span class="title">管理员列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="extra-icons-linecons.html">
+                                    <span class="title">添加管理员</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="extra-icons-elusive.html">
+                                    <span class="title">管理员权限设置</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="dashboard-2.html">
-                            <span class="title">Dashboard 2</span>
+                        <a href="extra-icons-fontawesome.html">
+                            <span class="title">用户</span>
+                            {{--<span class="label label-warning pull-right">4</span>--}}
                         </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-3.html">
-                            <span class="title">Dashboard 3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-4.html">
-                            <span class="title">Dashboard 4</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="skin-generator.html">
-                            <span class="title">Skin Generator</span>
-                        </a>
+                        <ul>
+                            <li>
+                                <a href="extra-icons-fontawesome.html">
+                                    <span class="title">用户列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="extra-icons-linecons.html">
+                                    <span class="title">添加用户</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="extra-icons-elusive.html">
+                                    <span class="title">用户权限设置</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
@@ -589,6 +611,7 @@
                 </ul>
             </li>
         </ul>
+        <!-- 导航菜单end -->
     </div>
 </div>
 <!-- 左部导航条end -->
