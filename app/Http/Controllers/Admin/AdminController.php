@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Articles;
-
 class AdminController extends Controller
 {
+    /**
+     * 主页
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        return view('admin/Admin', ['articles' => Articles::all()]);
+        dd('admin/index');
+        return view('admin/Admin');
     }
 }

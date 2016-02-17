@@ -30,6 +30,16 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
+//后台管理
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
-    Route::get('/','AdminController@index');
+    //主页
+    Route::get('/','IndexController@index');
+    //管理员
+    Route::group(['prefix'=>'admin'],function(){
+        Route::get('/','AdminController@index');
+    });
+    //文章
+    Route::group(['prefix'=>'articles'],function(){
+        Route::get('/','ArticlesController@index');
+    });
 });
