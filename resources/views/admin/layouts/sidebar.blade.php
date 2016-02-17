@@ -1,4 +1,8 @@
 @section('sidebar')
+<?php
+    list($controllers,$currentMethod) = explode('@',\Route::current()->getActionName());
+    $currentController=substr(explode('\\',$controllers)[4],0,strpos(explode('\\',$controllers)[4],'Controller'));
+?>
 <!-- 左部导航条start -->
 <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 <!-- 添加"fixed"的class能使导航条在浏览器中固定 -->
@@ -44,20 +48,28 @@
         <ul id="main-menu" class="main-menu">
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-            <li class="active opened active">
-                <a href="dashboard-1.html">
+            <!-- 主页 -->
+            <li @if($currentController=='Index')class="active"@endif>
+                <a href="{{url('admin')}}">
+                    <i class="linecons-globe"></i>
+                    <span class="title">主页</span>
+                </a>
+            </li>
+            <!-- 管理员、角色、权限 -->
+            <li @if($currentController=='Admin')class="active opened"@endif>
+                <a href="#">
                     <i class="linecons-cog"></i>
                     <span class="title">管理</span>
                 </a>
                 <ul>
-                    <li class="active">
+                    <li @if($currentController=='Admin')class="active opened"@endif>
                         <a href="extra-icons-fontawesome.html">
                             <span class="title">管理员</span>
                             {{--<span class="label label-warning pull-right">4</span>--}}
                         </a>
                         <ul>
-                            <li class="active">
-                                <a href="extra-icons-fontawesome.html">
+                            <li @if($currentController=='Admin' && $currentMethod=='index')class="active"@endif>
+                                <a href="{{url('admin/admin')}}">
                                     <span class="title">管理员列表</span>
                                 </a>
                             </li>
@@ -75,181 +87,114 @@
                     </li>
                     <li>
                         <a href="extra-icons-fontawesome.html">
-                            <span class="title">用户</span>
+                            <span class="title">角色</span>
                             {{--<span class="label label-warning pull-right">4</span>--}}
                         </a>
                         <ul>
                             <li>
                                 <a href="extra-icons-fontawesome.html">
-                                    <span class="title">用户列表</span>
+                                    <span class="title">角色列表</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="extra-icons-linecons.html">
-                                    <span class="title">添加用户</span>
+                                    <span class="title">添加角色</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="extra-icons-elusive.html">
-                                    <span class="title">用户权限设置</span>
+                                    <span class="title">角色权限设置</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="extra-icons-fontawesome.html">
+                            <span class="title">权限</span>
+                            {{--<span class="label label-warning pull-right">4</span>--}}
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="extra-icons-fontawesome.html">
+                                    <span class="title">权限列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="extra-icons-linecons.html">
+                                    <span class="title">添加权限</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
+            <!-- 用户 -->
             <li>
                 <a href="layout-variants.html">
-                    <i class="linecons-desktop"></i>
-                    <span class="title">Layouts</span>
+                    <i class="linecons-user"></i>
+                    <span class="title">用户</span>
                 </a>
                 <ul>
                     <li>
                         <a href="layout-variants.html">
-                            <span class="title">Layout Variants &amp; API</span>
+                            <span class="title">用户列表</span>
                         </a>
                     </li>
                     <li>
                         <a href="layout-collapsed-sidebar.html">
-                            <span class="title">Collapsed Sidebar</span>
+                            <span class="title">添加用户</span>
                         </a>
                     </li>
                     <li>
                         <a href="layout-static-sidebar.html">
-                            <span class="title">Static Sidebar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-menu.html">
-                            <span class="title">Horizontal Menu</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-plus-sidebar.html">
-                            <span class="title">Horizontal &amp; Sidebar Menu</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-menu-click-to-open-subs.html">
-                            <span class="title">Horizontal Open On Click</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-menu-min.html">
-                            <span class="title">Horizontal Menu Minimal</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-right-sidebar.html">
-                            <span class="title">Right Sidebar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-chat-open.html">
-                            <span class="title">Chat Open</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-horizontal-sidebar-menu-collapsed-right.html">
-                            <span class="title">Both Menus &amp; Collapsed</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-boxed.html">
-                            <span class="title">Boxed Layout</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="layout-boxed-horizontal-menu.html">
-                            <span class="title">Boxed &amp; Horizontal Menu</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="title">weidea.net</span>
+                            <span class="title">用户权限设置</span>
                         </a>
                     </li>
                 </ul>
             </li>
+            <!-- 分类 -->
             <li>
                 <a href="ui-panels.html">
-                    <i class="linecons-note"></i>
-                    <span class="title">UI Elements</span>
+                    <i class="linecons-paper-plane"></i>
+                    <span class="title">分类</span>
                 </a>
                 <ul>
                     <li>
                         <a href="ui-panels.html">
-                            <span class="title">Panels</span>
+                            <span class="title">分类列表</span>
                         </a>
                     </li>
                     <li>
                         <a href="ui-buttons.html">
-                            <span class="title">Buttons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-tabs-accordions.html">
-                            <span class="title">Tabs &amp; Accordions</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-modals.html">
-                            <span class="title">Modals</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-breadcrumbs.html">
-                            <span class="title">Breadcrumbs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-blockquotes.html">
-                            <span class="title">Blockquotes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-progressbars.html">
-                            <span class="title">Progress Bars</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-navbars.html">
-                            <span class="title">Navbars</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-alerts.html">
-                            <span class="title">Alerts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-pagination.html">
-                            <span class="title">Pagination</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-typography.html">
-                            <span class="title">Typography</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ui-other-elements.html">
-                            <span class="title">Other Elements</span>
+                            <span class="title">添加分类</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <!-- 文章 -->
+            <li @if($currentController=='Articles' && $currentMethod=='articles')class="active opened"@endif>
                 <a href="ui-widgets.html">
-                    <i class="linecons-star"></i>
-                    <span class="title">Widgets</span>
+                    <i class="linecons-doc"></i>
+                    <span class="title">文章</span>
                 </a>
+                <ul>
+                    <li>
+                        <a href="{{url('admin/articles')}}">
+                            <span class="title">文章列表</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailbox-compose.html">
+                            <span class="title">添加文章</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="mailbox-main.html">
                     <i class="linecons-mail"></i>
                     <span class="title">Mailbox</span>
-                    <span class="label label-success pull-right">5</span>
+                    {{--<span class="label label-success pull-right">5</span>--}}
                 </a>
                 <ul>
                     <li>

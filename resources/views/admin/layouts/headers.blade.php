@@ -37,10 +37,44 @@
 
     @yield('sidebar')
 
-    @yield('content')
+    <div class="main-content">
+
+        @yield('nav')
+
+        @yield('content')
+
+        <!-- 底部start -->
+        <!-- 选择底部风格class，"footer-type-1"灰色，"footer-type-2"黑色 -->
+        <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+        <!-- 添加"fixed"的class使底部固定在浏览器底部 -->
+        <footer class="main-footer sticky footer-type-1">
+
+            <div class="footer-inner">
+
+                <!-- Add your copyright text here -->
+                <div class="footer-text">
+                    &copy; 2014
+                    <strong>Xenon</strong>
+                    More Templates <a href="http://www.mycodes.net/" target="_blank" title="源码之家">源码之家</a> - Collect from <a href="#/" title="网页模板" target="_blank">网页模板</a>
+                </div>
+
+
+                <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+                <div class="go-up">
+
+                    <a href="#" rel="go-top">
+                        <i class="fa-angle-up"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+        <!-- 底部end -->
+    </div>
 
     @yield('chat')
-
 </div>
 <!-- 整体区域end -->
 
@@ -57,14 +91,6 @@
 <script src="{{asset('js/joinable.js')}}"></script>
 <script src="{{asset('js/xenon-api.js')}}"></script>
 <script src="{{asset('js/xenon-toggles.js')}}"></script>
-
-
-<!-- Imported scripts on this page -->
-<script src="{{asset('js/xenon-widgets.js')}}"></script>
-<script src="{{asset('js/devexpress-web-14.1/js/globalize.min.js')}}"></script>
-<script src="{{asset('js/devexpress-web-14.1/js/dx.chartjs.js')}}"></script>
-<script src="{{asset('js/toastr/toastr.min.js')}}"></script>
-
 
 <!-- JavaScripts initializations and stuff -->
 <script src="{{asset('js/xenon-custom.js')}}"></script>
