@@ -41,6 +41,8 @@
 
         @yield('nav')
 
+        @yield('title')
+
         @yield('content')
 
         <!-- 底部start -->

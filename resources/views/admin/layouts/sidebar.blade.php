@@ -1,8 +1,4 @@
 @section('sidebar')
-<?php
-    list($controllers,$currentMethod) = explode('@',\Route::current()->getActionName());
-    $currentController=substr(explode('\\',$controllers)[4],0,strpos(explode('\\',$controllers)[4],'Controller'));
-?>
 <!-- 左部导航条start -->
 <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 <!-- 添加"fixed"的class能使导航条在浏览器中固定 -->
@@ -49,26 +45,26 @@
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <!-- 主页 -->
-            <li @if($currentController=='Index')class="active"@endif>
+            <li @if($shareDatas['currentRouteDatas']['controller']=='Index')class="active"@endif>
                 <a href="{{url('admin')}}">
                     <i class="linecons-globe"></i>
                     <span class="title">主页</span>
                 </a>
             </li>
             <!-- 管理员、角色、权限 -->
-            <li @if($currentController=='Admin')class="active opened"@endif>
+            <li @if($shareDatas['currentRouteDatas']['controller']=='Admin')class="active opened"@endif>
                 <a href="#">
                     <i class="linecons-cog"></i>
                     <span class="title">管理</span>
                 </a>
                 <ul>
-                    <li @if($currentController=='Admin')class="active opened"@endif>
+                    <li @if($shareDatas['currentRouteDatas']['controller']=='Admin')class="active opened"@endif>
                         <a href="extra-icons-fontawesome.html">
                             <span class="title">管理员</span>
                             {{--<span class="label label-warning pull-right">4</span>--}}
                         </a>
                         <ul>
-                            <li @if($currentController=='Admin' && $currentMethod=='index')class="active"@endif>
+                            <li @if($shareDatas['currentRouteDatas']['controller']=='Admin' && $shareDatas['currentRouteDatas']['method']=='index')class="active"@endif>
                                 <a href="{{url('admin/admin')}}">
                                     <span class="title">管理员列表</span>
                                 </a>
@@ -172,13 +168,13 @@
                 </ul>
             </li>
             <!-- 文章 -->
-            <li @if($currentController=='Articles' && $currentMethod=='articles')class="active opened"@endif>
+            <li @if($shareDatas['currentRouteDatas']['controller']=='Articles')class="active opened"@endif>
                 <a href="ui-widgets.html">
                     <i class="linecons-doc"></i>
                     <span class="title">文章</span>
                 </a>
                 <ul>
-                    <li>
+                    <li @if($shareDatas['currentRouteDatas']['controller']=='Articles' && $shareDatas['currentRouteDatas']['method']=='index')class="active opened"@endif>
                         <a href="{{url('admin/articles')}}">
                             <span class="title">文章列表</span>
                         </a>
