@@ -60,13 +60,13 @@
                             <th>编号</th>
                             <th>标题</th>
                             <th>缩略图</th>
+                            <th>用户</th>
                             <th>状态</th>
                             <th>创建时间</th>
                             <th>更新时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
-
                     <tbody class="middle-align">
                         @foreach($articlesLists as $articlesList)
                             <tr>
@@ -76,10 +76,11 @@
                                 <td>{{$articlesList->id}}{{--<span class="label label-success">New Applicant</span>--}}</td>
                                 <td>{{$articlesList->title}}</td>
                                 <td>{{$articlesList->thumb or '无'}}</td>
+                                <td>{{$articlesList->name}}</td>
                                 @if($articlesList->status==1)
-                                    <td>正常</td>
+                                    <td style="color: forestgreen;">正常</td>
                                 @elseif($articlesList->status==-1)
-                                    <td>禁用</td>
+                                    <td style="color: red;">禁用</td>
                                 @elseif($articlesList->status==-2)
                                     <td>回收站</td>
                                 @endif
@@ -88,7 +89,7 @@
                                 <td>
                                     <a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">编辑</a>
                                     <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">删除</a>
-                                    <a href="#" class="btn btn-info btn-sm btn-icon icon-left">Profile</a>
+                                    <a href="#" class="btn btn-warning btn-sm btn-icon icon-left">禁用</a>
                                 </td>
                             </tr>
                         @endforeach

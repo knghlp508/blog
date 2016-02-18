@@ -39,6 +39,6 @@ class BaseController extends Controller
     public function getCurrentTitles()
     {
         $currentRouteKeyMap=implode('/',$this->getCurrentRouteDatas());
-        return $this->routeKeyMaps[$currentRouteKeyMap];
+        return $routeKeyMap=(array_key_exists($currentRouteKeyMap,$this->routeKeyMaps))?$this->routeKeyMaps[$currentRouteKeyMap]:null;
     }
 }

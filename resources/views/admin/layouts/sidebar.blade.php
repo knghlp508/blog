@@ -177,6 +177,9 @@
                     <li @if($shareDatas['currentRouteDatas']['controller']=='Articles' && $shareDatas['currentRouteDatas']['method']=='index')class="active opened"@endif>
                         <a href="{{url('admin/articles')}}">
                             <span class="title">文章列表</span>
+                            @if($shareDatas['currentRouteDatas']['controller']=='Articles')
+                                <span class="label label-success pull-right">{{$articlesDatas['total']}}</span>
+                            @endif
                         </a>
                     </li>
                     <li>

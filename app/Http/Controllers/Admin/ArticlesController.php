@@ -9,6 +9,14 @@ use App\Http\Requests;
 
 class ArticlesController extends BaseController
 {
+    protected $articlesLists;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->articlesLists=Articles::with('user');
+        view()->share('articlesDatas',['total'=>$this->articlesLists->count()]);
+    }
 
     /**
      * 文章列表
@@ -16,9 +24,8 @@ class ArticlesController extends BaseController
      */
     public function index()
     {
-        $articlesLists=Articles::user();dd($articlesLists);
-        $articlesLists=Articles::paginate(10);
-
+        $articlesLists=Articles::with('user')->join('users AS u','u.id','=','articles.user_id')->paginate(10);
+        //dd($articlesLists);
         return view('admin/ArticlesList',['articlesLists'=>$articlesLists]);
     }
 
